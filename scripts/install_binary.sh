@@ -25,7 +25,8 @@ cd "$ROOT_DIR"
 OS="$(uname)"
 OUTFILE="$ROOT_DIR/nvim-ghost-binary"
 PKG_VERSION=$(cat "$ROOT_DIR/binary_version")
-RELEASE_URL="https://github.com/subnut/nvim-ghost.nvim/releases/download/$PKG_VERSION"
+RELEASE_URL="https://github.com/fiskfisk33/nvim-ghost.nvim/releases/download/$PKG_VERSION"
+
 
 # delete currently installed binary
 rm -f "$OUTFILE"

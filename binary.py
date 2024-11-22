@@ -321,7 +321,7 @@ class GhostWebSocket(WebSocket):
             # Since this is the first message, it means we haven't set the
             # filetype yet. So, let's set the filetype now.
             neovim_handle.api.buf_set_option(buffer_handle, "filetype", filetype)
-            self._trigger_autocmds(url)
+            self._trigger_autocmds("ghost-" + url)
             self.last_set_filetype = filetype
 
         if not filetype == self.last_set_filetype:
@@ -341,7 +341,7 @@ class GhostWebSocket(WebSocket):
         global FOCUSED_NVIM_ADDRESS
         self.neovim_address = FOCUSED_NVIM_ADDRESS
         self.neovim_handle = pynvim.attach("socket", path=self.neovim_address)
-        self.buffer_handle = self.neovim_handle.api.create_buf(False, False)
+        self.buffer_handle = self.neovim_handle.api.create_buf(False, True)
         self.neovim_handle.api.buf_set_option(self.buffer_handle, "bufhidden", "wipe")
         self.neovim_handle.command(f"tabe | {self.buffer_handle.number}buffer")
         self.handle_neovim_notifications = True
