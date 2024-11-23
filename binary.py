@@ -321,7 +321,7 @@ class GhostWebSocket(WebSocket):
             # Since this is the first message, it means we haven't set the
             # filetype yet. So, let's set the filetype now.
             neovim_handle.api.buf_set_option(buffer_handle, "filetype", filetype)
-            self._trigger_autocmds("ghost-" + url)
+            self._trigger_autocmds("ghost/" + url)
             self.last_set_filetype = filetype
 
         if not filetype == self.last_set_filetype:
